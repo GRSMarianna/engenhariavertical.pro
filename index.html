@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Engenharia Vertical — Gestão de Anúncios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1510;
+      --surface: #141f18;
+      --surface2: #1a2920;
+      --accent: #5a9e72;
+      --accent-light: #7dbd91;
+      --ink: #eef3ef;
+      --muted: #7a9082;
+      --border: #1f3028;
+      --radius: 12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 60px;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0;
+      background: rgba(13,21,16,0.9);
+      backdrop-filter: blur(18px);
+      z-index: 100;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 11px;
+      font-size: 0.95rem; font-weight: 500; color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-logo-mark {
+      width: 34px; height: 34px;
+      background: var(--accent);
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-mark svg { width: 17px; height: 17px; fill: #fff; }
+    .nav-logo small { display: block; font-size: 0.68rem; color: var(--muted); font-weight: 300; }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 0.87rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent-light); }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 96px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%; transform: translateX(-50%);
+      width: 640px; height: 640px;
+      background: radial-gradient(circle, rgba(90,158,114,0.13) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(90,158,114,0.12);
+      border: 1px solid rgba(90,158,114,0.3);
+      color: var(--accent-light);
+      font-size: 0.76rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 99px;
+      margin-bottom: 32px;
+    }
+    .badge::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.18;
+      max-width: 780px;
+      margin: 0 auto 22px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent-light);
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 46px;
+    }
+    .hero-actions {
+      display: flex; justify-content: center; align-items: center;
+      gap: 18px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 9px;
+      font-size: 0.93rem; font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+    .btn-ghost { color: var(--muted); font-size: 0.88rem; text-decoration: none; }
+    .btn-ghost:hover { color: var(--ink); }
+
+    /* STATS BAR */
+    .stats-bar {
+      display: flex; justify-content: center;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .stat {
+      flex: 1; max-width: 200px;
+      text-align: center;
+      padding: 32px 20px;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 400;
+      color: var(--accent-light);
+    }
+    .stat span { font-size: 0.82rem; color: var(--muted); }
+
+    /* SECTIONS */
+    .section { max-width: 1060px; margin: 0 auto; padding: 80px 24px; }
+    .section-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; text-align: center; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 400; text-align: center; margin-bottom: 56px; }
+
+    /* FEATURES */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 18px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .feature-card:hover { border-color: rgba(90,158,114,0.45); transform: translateY(-3px); }
+    .feature-icon { font-size: 1.5rem; margin-bottom: 18px; }
+    .feature-card h4 { font-weight: 500; font-size: 0.97rem; margin-bottom: 10px; color: var(--ink); }
+    .feature-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+    /* ABOUT STRIP */
+    .about-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .about-inner {
+      max-width: 1060px; margin: 0 auto;
+      padding: 80px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-inner h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem; font-weight: 400;
+      margin-bottom: 18px;
+    }
+    .about-inner p { font-size: 0.92rem; color: var(--muted); margin-bottom: 14px; }
+    .about-inner a { color: var(--accent-light); text-decoration: none; font-size: 0.88rem; }
+    .about-inner a:hover { text-decoration: underline; }
+
+    .checks { list-style: none; padding: 0; }
+    .checks li {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-size: 0.9rem; color: var(--muted); margin-bottom: 14px;
+    }
+    .checks li::before { content: '✓'; color: var(--accent-light); font-weight: 600; flex-shrink: 0; }
+
+    /* PERMS */
+    .perms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+    }
+    .perm-tag {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+    .perm-tag code { display: block; color: var(--accent-light); font-family: monospace; font-size: 0.8rem; margin-bottom: 5px; }
+    .perm-tag span { font-size: 0.82rem; color: var(--muted); }
+
+    /* CONTACT */
+    .contact-section { background: var(--surface2); border-top: 1px solid var(--border); }
+    .contact-inner { max-width: 680px; margin: 0 auto; padding: 80px 24px; text-align: center; }
+    .contact-inner h3 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 14px; }
+    .contact-inner p { color: var(--muted); font-size: 0.92rem; margin-bottom: 36px; }
+    .contact-cards { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 28px;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .contact-card:hover { border-color: rgba(90,158,114,0.5); transform: translateY(-2px); }
+    .contact-card .ci { font-size: 1.2rem; margin-bottom: 6px; }
+    .contact-card .cl { font-size: 0.75rem; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .contact-card .cv { font-size: 0.9rem; color: var(--ink); font-weight: 400; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    footer p { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 22px; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.8rem; }
+    .footer-links a:hover { color: var(--ink); }
+
+    @media (max-width: 720px) {
+      nav { padding: 18px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 32px; }
+      .stats-bar { flex-wrap: wrap; }
+      .stat { min-width: 140px; border-right: none; border-bottom: 1px solid var(--border); }
+      footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://engenhariavertical.pro">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7l8-4.32z"/></svg>
+    </div>
+    <div>
+      EngenhariaVertical
+      <small>Projetos Estruturais — SP e MS</small>
+    </div>
+  </a>
+  <a href="https://wa.me/5535991166284" target="_blank" class="nav-cta">💬 Falar no WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">Integrado à API de Marketing do Meta</div>
+  <h1>Anúncios que geram <em>obras reais,</em><br>gerenciados com precisão</h1>
+  <p>A Engenharia Vertical utiliza tecnologia de integração direta com a API do Facebook e Instagram para gerir suas campanhas de projetos estruturais com eficiência e transparência.</p>
+  <div class="hero-actions">
+    <a href="https://wa.me/5535991166284" target="_blank" class="btn-primary">Solicitar Orçamento</a>
+    <a href="privacy.html" class="btn-ghost">Ver Política de Privacidade →</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><strong>3+</strong><span>Anos de Atuação</span></div>
+  <div class="stat"><strong>10+</strong><span>Projetos Entregues</span></div>
+  <div class="stat"><strong>3</strong><span>Sistemas Estruturais</span></div>
+  <div class="stat"><strong>100%</strong><span>Atendimento Direto</span></div>
+</div>
+
+<!-- SERVICES -->
+<section class="section">
+  <p class="section-label">Nossos Serviços</p>
+  <h2 class="section-title">O que a Engenharia Vertical entrega</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📐</div>
+      <h4>Projetos Estruturais</h4>
+      <p>Projetos em alvenaria estrutural, concreto armado e parede de concreto para residências e pequenos edifícios, com memorial de cálculo completo.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <h4>ATP — Avaliação Técnica de Projeto</h4>
+      <p>Análise independente da estrutura e viabilidade do seu projeto. Uma segunda opinião especializada que traz segurança nas decisões e fluidez na obra.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔍</div>
+      <h4>Estudo de Viabilidade Estrutural</h4>
+      <p>Análise comparativa entre sistemas estruturais — você recebe a opção mais econômica e segura, com embasamento técnico claro.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <h4>Consultoria Técnica Direta</h4>
+      <p>Respostas rápidas e precisas diretamente com a engenheira responsável, do início ao fim da obra — sem intermediários.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📍</div>
+      <h4>Atendimento Regional</h4>
+      <p>Atuação presencial em São José do Rio Preto, Araçatuba, Olímpia e Três Lagoas (MS), com entrega de projetos em todo o Brasil.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h4>Gestão de Anúncios via API</h4>
+      <p>Nossas campanhas no Facebook e Instagram são gerenciadas diretamente via API de Marketing do Meta, com controle total e relatórios em tempo real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-strip">
+  <div class="about-inner">
+    <div>
+      <h3>Técnica, agilidade e compromisso</h3>
+      <p>A Engenharia Vertical nasceu da convicção de que um bom projeto estrutural não precisa ser burocrático ou distante. Somos uma empresa enxuta e especializada — o que nos permite oferecer algo raro: atenção total ao cliente do primeiro contato à entrega.</p>
+      <p>Atuamos com foco em casas e pequenos edifícios, sempre com rigor técnico, conformidade com as normas NBR e comunicação direta.</p>
+      <a href="https://engenhariavertical.pro" target="_blank">Conheça nosso site completo →</a>
+    </div>
+    <ul class="checks">
+      <li>Atendimento direto com a engenheira responsável, sem intermediários.</li>
+      <li>Estudo comparativo de sistemas estruturais incluído em cada projeto.</li>
+      <li>Conformidade com normas NBR e legislação vigente em cada entrega.</li>
+      <li>Economia sem abrir mão da segurança estrutural.</li>
+      <li>Privacidade de dados garantida conforme a LGPD e políticas do Meta.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PERMISSIONS -->
+<section class="section">
+  <p class="section-label">Transparência</p>
+  <h2 class="section-title">Permissões da API utilizadas</h2>
+  <div class="perms-grid">
+    <div class="perm-tag"><code>ads_management</code><span>Criação e edição de anúncios</span></div>
+    <div class="perm-tag"><code>ads_read</code><span>Leitura de relatórios e métricas</span></div>
+    <div class="perm-tag"><code>business_management</code><span>Acesso ao portfólio de negócios</span></div>
+    <div class="perm-tag"><code>pages_read_engagement</code><span>Engajamento das Páginas do Facebook</span></div>
+    <div class="perm-tag"><code>pages_show_list</code><span>Listagem de páginas vinculadas</span></div>
+    <div class="perm-tag"><code>read_insights</code><span>Métricas e insights de desempenho</span></div>
+    <div class="perm-tag"><code>instagram_basic</code><span>Acesso básico ao Instagram</span></div>
+    <div class="perm-tag"><code>instagram_manage_insights</code><span>Métricas do Instagram</span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section">
+  <div class="contact-inner">
+    <h3>Vamos conversar sobre seu projeto</h3>
+    <p>O primeiro contato é sem compromisso. Fale diretamente com a engenheira responsável e receba orientação técnica clara e ágil.</p>
+    <div class="contact-cards">
+      <a class="contact-card" href="https://wa.me/5535991166284" target="_blank">
+        <div class="ci">💬</div>
+        <div class="cl">WhatsApp</div>
+        <div class="cv">(35) 99116-6284</div>
+      </a>
+      <a class="contact-card" href="mailto:mariannanevesnascimento@gmail.com">
+        <div class="ci">✉️</div>
+        <div class="cl">E-mail</div>
+        <div class="cv">mariannanevesnascimento@gmail.com</div>
+      </a>
+      <a class="contact-card" href="https://engenhariavertical.pro" target="_blank">
+        <div class="ci">🌐</div>
+        <div class="cl">Site</div>
+        <div class="cv">engenhariavertical.pro</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Engenharia Vertical — Todos os direitos reservados. Não afiliado ao Meta Platforms, Inc.</p>
+  <div class="footer-links">
+    <a href="privacy.html">Política de Privacidade</a>
+    <a href="https://engenhariavertical.pro" target="_blank">Site Principal</a>
+  </div>
+</footer>
+
+</body>
+</html>

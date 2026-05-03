@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Política de Privacidade — Engenharia Vertical</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f3ef;
+      --surface: #ffffff;
+      --ink: #1c1a17;
+      --muted: #6b6760;
+      --accent: #2a4d3a;
+      --accent-light: #e8f0eb;
+      --border: #dedad2;
+      --radius: 10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-mark {
+      width: 38px; height: 38px;
+      background: var(--accent);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-mark svg { width: 20px; height: 20px; fill: #fff; }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--ink); }
+    .logo-text span { display: block; font-size: 0.7rem; font-family: 'Inter', sans-serif; font-weight: 400; color: var(--muted); letter-spacing: 0.05em; }
+    .header-link { font-size: 0.85rem; color: var(--muted); text-decoration: none; }
+    .header-link:hover { color: var(--accent); }
+    main { max-width: 740px; margin: 56px auto; padding: 0 24px 100px; }
+    .eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    h1.page-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 400; line-height: 1.2; margin-bottom: 10px; }
+    .meta { font-size: 0.83rem; color: var(--muted); margin-bottom: 52px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 36px; margin-bottom: 20px; }
+    .card h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 400; margin-bottom: 16px; color: var(--ink); }
+    .card p, .card li { color: #3d3b36; margin-bottom: 10px; font-size: 0.95rem; }
+    .card ul { padding-left: 20px; }
+    .card li { margin-bottom: 7px; }
+    .card a { color: var(--accent); text-decoration: none; }
+    .card a:hover { text-decoration: underline; }
+    .info-box {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 16px 22px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: var(--ink);
+      line-height: 1.9;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; margin-bottom: 6px; }
+    .badge {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 500;
+      font-family: monospace;
+      padding: 5px 12px;
+      border-radius: 99px;
+      border: 1px solid #c1d4c7;
+    }
+    footer { text-align: center; padding: 36px 24px; font-size: 0.82rem; color: var(--muted); border-top: 1px solid var(--border); }
+    @media (max-width: 600px) {
+      header { padding: 20px 24px; flex-direction: column; gap: 14px; align-items: flex-start; }
+      .card { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://engenhariavertical.pro">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7l8-4.32z"/></svg>
+    </div>
+    <div class="logo-text">
+      EngenhariaVertical
+      <span>Projetos Estruturais — SP e MS</span>
+    </div>
+  </a>
+  <a class="header-link" href="https://engenhariavertical.pro">← Voltar ao site</a>
+</header>
+
+<main>
+  <p class="eyebrow">Documento Legal</p>
+  <h1 class="page-title">Política de Privacidade</h1>
+  <p class="meta">Última atualização: 03 de maio de 2025 &nbsp;·&nbsp; engenhariavertical.pro</p>
+
+  <div class="card">
+    <h2>1. Quem somos</h2>
+    <p>
+      A <strong>Engenharia Vertical</strong> é uma empresa especializada em projetos estruturais para residências e pequenos edifícios, atuando no noroeste paulista (São José do Rio Preto, Araçatuba, Olímpia) e na região de Três Lagoas (MS). Nosso site é <a href="https://engenhariavertical.pro" target="_blank">engenhariavertical.pro</a>.
+    </p>
+    <p>
+      Este documento descreve como tratamos os dados coletados por meio das nossas ferramentas digitais, incluindo o aplicativo de gestão de anúncios que utilizamos para gerenciar nossas campanhas no Facebook e Instagram via API de Marketing do Meta.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>2. Quais dados coletamos</h2>
+    <p>Para o funcionamento da integração com a API de Marketing do Meta, coletamos e processamos:</p>
+    <ul>
+      <li>Tokens de acesso à API de Marketing do Meta (armazenados com criptografia).</li>
+      <li>Identificadores de contas de anúncios, Páginas do Facebook e contas do Instagram vinculadas.</li>
+      <li>Dados de desempenho de campanhas: impressões, cliques, alcance, gastos e métricas relacionadas.</li>
+      <li>Configurações de conjuntos de anúncios e segmentações criadas via API.</li>
+      <li>Endereço de e-mail de contato utilizado no cadastro.</li>
+    </ul>
+    <div class="info-box">
+      Não coletamos senhas, dados bancários ou informações pessoais de pessoas que interagem com os anúncios veiculados.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>3. Como utilizamos os dados</h2>
+    <p>Os dados coletados são utilizados exclusivamente para:</p>
+    <ul>
+      <li>Autenticar e manter a conexão ativa com a API de Marketing do Meta.</li>
+      <li>Exibir relatórios e métricas das campanhas publicitárias da Engenharia Vertical.</li>
+      <li>Gerenciar e otimizar anúncios no Facebook e Instagram.</li>
+      <li>Enviar alertas e notificações sobre o desempenho das campanhas.</li>
+    </ul>
+    <p>Não utilizamos seus dados para fins publicitários externos, não os vendemos e não os compartilhamos com terceiros sem sua autorização expressa.</p>
+  </div>
+
+  <div class="card">
+    <h2>4. Permissões da API do Meta utilizadas</h2>
+    <p>O aplicativo solicita apenas as permissões estritamente necessárias para seu funcionamento:</p>
+    <div class="badge-row">
+      <span class="badge">ads_management</span>
+      <span class="badge">ads_read</span>
+      <span class="badge">business_management</span>
+      <span class="badge">pages_read_engagement</span>
+      <span class="badge">pages_show_list</span>
+      <span class="badge">read_insights</span>
+      <span class="badge">instagram_basic</span>
+      <span class="badge">instagram_manage_insights</span>
+    </div>
+    <ul style="margin-top:16px;">
+      <li><strong>ads_management</strong> — Criação e gerenciamento de campanhas e anúncios.</li>
+      <li><strong>ads_read</strong> — Leitura de dados de campanhas e relatórios de performance.</li>
+      <li><strong>business_management</strong> — Acesso ao portfólio de negócios vinculado.</li>
+      <li><strong>pages_read_engagement</strong> — Leitura de dados de engajamento das Páginas do Facebook.</li>
+      <li><strong>pages_show_list</strong> — Listagem de Páginas associadas à conta.</li>
+      <li><strong>read_insights</strong> — Acesso a métricas e insights de desempenho.</li>
+      <li><strong>instagram_basic</strong> — Acesso básico à conta do Instagram vinculada.</li>
+      <li><strong>instagram_manage_insights</strong> — Leitura de métricas e insights do Instagram.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>5. Armazenamento e segurança</h2>
+    <p>
+      Todos os tokens de acesso e dados sensíveis são armazenados com criptografia. Adotamos boas práticas de segurança para proteger as informações contra acesso não autorizado, alteração ou divulgação indevida.
+    </p>
+    <p>Os tokens de acesso não são mantidos além do estritamente necessário para as operações solicitadas pelo usuário.</p>
+  </div>
+
+  <div class="card">
+    <h2>6. Retenção e exclusão de dados</h2>
+    <p>
+      Os dados são retidos enquanto a conta estiver ativa no aplicativo. Após a revogação do acesso no painel do Meta ou mediante solicitação expressa, todos os dados associados serão removidos em até <strong>30 dias</strong>.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>7. Seus direitos</h2>
+    <p>Em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018), você tem o direito de:</p>
+    <ul>
+      <li>Acessar, corrigir ou solicitar a exclusão dos seus dados pessoais.</li>
+      <li>Revogar o acesso do aplicativo a qualquer momento pelo painel de configurações do Meta.</li>
+      <li>Solicitar a portabilidade dos seus dados.</li>
+      <li>Ser informado em caso de incidente de segurança que possa afetá-lo.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>8. Compartilhamento com terceiros</h2>
+    <p>
+      Não vendemos nem compartilhamos seus dados com terceiros para fins comerciais. O único terceiro envolvido no processamento é o <strong>Meta Platforms, Inc.</strong>, necessariamente para viabilizar a integração via API — o que ocorre conforme os <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Termos de Privacidade do Meta</a>.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>9. Alterações nesta política</h2>
+    <p>
+      Esta política pode ser revisada periodicamente. Comunicaremos mudanças relevantes por e-mail ou dentro do aplicativo. O uso continuado após as alterações indica aceitação da versão atualizada.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>10. Contato</h2>
+    <p>Para dúvidas, solicitações de exclusão ou qualquer questão relacionada à sua privacidade, entre em contato:</p>
+    <div class="info-box">
+      ✉️ <strong>E-mail:</strong> <a href="mailto:mariannanevesnascimento@gmail.com">mariannanevesnascimento@gmail.com</a><br>
+      📞 <strong>WhatsApp:</strong> <a href="https://wa.me/5535991166284">(35) 99116-6284</a><br>
+      🌐 <strong>Site:</strong> <a href="https://engenhariavertical.pro">engenhariavertical.pro</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2025 Engenharia Vertical — Todos os direitos reservados.<br>
+  Este aplicativo não é afiliado ao Meta Platforms, Inc.
+</footer>
+
+</body>
+</html>
